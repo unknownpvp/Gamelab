@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GameLab Text Search</title>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.js"></script>
+    <style>
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 5px;
+      text-align: left;
+    }
+    body {
+    background-color: gray;
+    color: white;
+    }
+    </style>
+
+</head>
+<body>
+
+<div class="context">
+
+<h1> Search results for "{{ query }}": </h1>
+<p hidden id="query">{{ query }}:</p>
+<form>
+  <input type="button" value="Go back!" onclick="history.back()">
+</form>
+<br><br>
+<div id="content">
+<ol id="list">
+    {% for i in document[3] %}
+    <li>
+        <h3>Metacritic game user comment = {{ i[0] }}</h3><br>
+        <table style="width:100%">
+          <tr>
+            <th>Term Frequency</th>
+            <th>IDF</th>
+            <th>TF-IDF</th>
+          </tr>
+          <tr>
+            <td>{{ document[4][i[0]] }}</td>
+            <td>{{ document[1][i[0]] }}</td>
+            <td> {{ i[1] }}</td>
+          </tr>
+        </table>
+        <br>
+    </li>
+    {% endfor %}
+
+</ol>
+</div>
+</div>
+
+<script>
+        var instance = new Mark(document.querySelector(".context"));
+        instance.mark("{{query}}", {
+    "accuracy": "partially"
+});
+</script>
+
+
+</body>
+</html>

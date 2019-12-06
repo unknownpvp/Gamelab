@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GameLab Classifier</title>
+    <meta charset="UTF-8">
+    <style>
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 5px;
+      text-align: left;
+    }
+    body {
+    background-color: gray;
+    color: white;
+    }
+    </style>
+</head>
+
+<h1> Search results for "{{query}}": </h1>
+<p hidden id="query">{{ query }}:</p>
+<form>
+  <input type="button" value="Go back!" onclick="history.back()">
+</form>
+<br><br>
+<body>
+
+<div class="content">
+<ol id="list">
+    {% for i in range(10) %}
+    {% if percent[i] > 0%}
+    <li>
+        <table style="width:100%">
+          <tr>
+            <th>Genre</th>
+          </tr>
+          <tr>
+            <td>{{categories[i]}} : {{percent[i]}} %</td>
+          </tr>
+        </table>
+        <br>
+    </li>
+    {% endif %}
+    {% endfor %}
+
+</ol>
+</div>
+
+</body>
+</html>

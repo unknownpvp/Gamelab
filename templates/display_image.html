@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GameLab Image Recognition</title>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.js"></script>
+    <style>
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 5px;
+      text-align: left;
+    }
+    body {
+    background-color: gray;
+    color: white;
+    }
+    </style>
+
+</head>
+<body>
+
+<div class="context">
+
+<h1> Search results for "{{ query }}": </h1>
+<p hidden id="query">{{ query }}:</p>
+<form>
+  <input type="button" value="Go back!" onclick="history.back()">
+</form>
+<br><br>
+<div id="content">
+<ol id="list">
+    {% for i in image[1]%}
+    <li>
+        <h3>{{ query }}</h3><br>
+        <table style="width:35%">
+          <tr>
+              <th>TF-IDF</th>
+          </tr>
+          <tr>
+            <img src="{{ image[0][i[0]] }}">
+              <th>{{ i[1] }}</th>
+          </tr>
+        </table>
+        <br>
+    </li>
+    {% endfor %}
+</ol>
+</div>
+</div>
+
+<script>
+        var instance = new Mark(document.querySelector(".context"));
+        instance.mark("{{query}}", {
+    "accuracy": "partially"
+});
+</script>
+
+
+</body>
+</html>

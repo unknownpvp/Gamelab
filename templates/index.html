@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+  {% block content %}
+  <style>
+  .inner-form {
+    color: white;
+    margin: 20px;
+    padding: 20px;
+  }
+  </style>
+    <div class="s01">
+      <form action = "/result/" method = "POST">
+        <fieldset>
+          <legend id="logo" align="center"><h1>GameLab</h1></legend>
+        </fieldset>
+		<br>
+		<br>
+        <div class="inner-form">
+          <div align="center" class="input-field first-wrap">
+            <h2>Text Search</h2>
+              <div class="search-box">
+              <input align="center" name="search" placeholder="Search here..." />
+              <button class="btn-search" type="submit" value="Search" class="search-btn"><i class="fa fa-search"></i></button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="s02">
+      <form action = "/classify/" method = "POST">
+         <div class="inner-form">
+          <div align="center" class="input-field first-wrap">
+            <h2>Classifier</h2>
+              <div class="search-box">
+              <input align="center" name="classifier" placeholder="Search here..." />
+              <button class="btn-search" type="submit" value="classSearch" class="class-btn"><i class="fa fa-search"></i></button>
+            </div>
+          </div>
+        </div>
+      </form>
+     </div>
+    <div class="s03">
+      <form action = "/image/" method = "POST">
+         <div class="inner-form">
+          <div align="center" class="input-field first-wrap">
+            <h2>Image Recognition</h2>
+              <div class="search-box">
+              <input align="center" name="imagesearch" placeholder="Search here..." />
+              <button class="btn-search" type="submit" value="imageSearch" class="image-btn"><i class="fa fa-search"></i></button>
+            </div>
+          </div>
+        </div>
+      </form>
+     </div>
+	<div class="search_result">{% block result %}{% endblock %}</div>
+
+  {% endblock %}
+
