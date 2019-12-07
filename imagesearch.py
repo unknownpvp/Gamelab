@@ -16,7 +16,7 @@ class ImageSearch:
         self.doctf = {}
         self.docidf = {}
         tokenizer = self.tokenizer
-        self.finalimages = dict()
+        self.finalimages = {}
 
     def imageLoad(self, documents):
         docs = []
@@ -65,6 +65,24 @@ class ImageSearch:
                 result.append(ps.stem(word))
 
         self.searchedquery = result
+
+    def compute_tf(terms):
+        term_freq = {}
+        for word in terms:
+            if word in term_freq:
+                term_freq[word] += 1
+            else:
+                term_freq[word] = 1
+        for word in term_freq:
+            term_freq[word] = term_freq[word] / len(terms)
+        return term_freq
+
+    def compute_idf(items, df):
+        idf = {}
+        for comment in items:
+            for word in items[comment]:
+                idf[word] = math.log(len(items) / int(df[word]))
+        return idf
 
     def calculateTFIDF(self):
         query = []
