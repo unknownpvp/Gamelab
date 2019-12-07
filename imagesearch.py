@@ -25,7 +25,7 @@ class ImageSearch:
         for item in documents:
             docs.append(item[0])
 
-        with open("image/captions_val2014.json", "r") as file:
+        with open("image/panoptic_val2017.json", "r") as file:
             data = json.load(file)
             for item in data["images"]:
                 if item["file_name"] in docs:
