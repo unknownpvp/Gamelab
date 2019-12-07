@@ -46,7 +46,7 @@ def classify():
 
 
 @app.route('/image/', methods=['POST'])
-def show_images():
+def images():
     query = request.form['imagesearch']
     terms = query.lower().split(" ")
     gameimage.imagequery(terms)
